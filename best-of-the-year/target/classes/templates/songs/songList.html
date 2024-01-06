@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Song List</title>
+</head>
+<body>
+<!-- ATTRIBUTI: songList(List) -->
+<h1>Song List</h1>
+<ul th:if="${songList.size() > 0}">
+    <li th:each="song : ${songList}">
+        <a th:href="@{/songs/details/{id}(id=${song.id})}" th:text="${song.title}"></a>
+    </li>
+</ul>
+<div th:unless="${songList.size() > 0}">The song list is empty</div>
+<a th:href="@{/}">Back to Home</a>
+</body>
+</html>
